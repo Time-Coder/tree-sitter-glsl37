@@ -76,11 +76,10 @@ for python_path in python_paths.values():
         files = glob.glob(f"dist/tree_sitter_glsl37-*-linux_{machine}.whl")
         for file in files:
             try:
-                subprocess.check_call([python_path, "-m", "auditwheel", "repair", file, f"--plat=manylinux_2_24_{machine}", "-w", "dist"])
+                subprocess.check_call([python_path, "-m", "auditwheel", "repair", file, f"--plat=manylinux_2_5_{machine}", "-w", "dist"])
             except:
                 subprocess.check_call([python_path, "-m", "pip", "install", "auditwheel"])
-                subprocess.check_call([python_path, "-m", "auditwheel", "repair", file, f"--plat=manylinux_2_24_{machine}", "-w", "dist"])
-            os.rename(file[:-len(f"-linux_{machine}.whl")] + f"-manylinux_2_24_{machine}.whl", file[:-len(f"-linux_{machine}.whl")] + f"-manylinux_2_15_{machine}.whl")
+                subprocess.check_call([python_path, "-m", "auditwheel", "repair", file, f"--plat=manylinux_2_5_{machine}", "-w", "dist"])
             os.remove(file)
 
     i += 1
