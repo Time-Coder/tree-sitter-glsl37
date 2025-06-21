@@ -73,7 +73,7 @@ for python_path in python_paths.values():
 
     if platform.system() == "Linux":
         machine = platform.machine()
-        files = glob.glob(f"dist/assimpy-*-linux_{machine}.whl")
+        files = glob.glob(f"dist/tree_sitter_glsl37-*-linux_{machine}.whl")
         for file in files:
             try:
                 subprocess.check_call([python_path, "-m", "auditwheel", "repair", file, f"--plat=manylinux_2_24_{machine}", "-w", "dist"])
